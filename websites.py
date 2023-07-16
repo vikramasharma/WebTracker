@@ -13,17 +13,17 @@ def get_list_feed():
         return
     html_content = resp.content
     dom = BeautifulSoup(html_content,'html.parser')
-    biglist = dom.select("div.gh-content.gh-canvas div ul")
-    print(biglist)
+    # biglist = dom.select("div.gh-content.gh-canvas")
+    print(dom)
     filtered_repos = []
-    for list in biglist:
-        name = list.text.strip()
-        if "seed" in name or "Seed" in name:
-            href_link = list.a.attrs["href"]
-            filtered_repos.append({'name': name, 'link':href_link})
+    # for list in biglist:
+    #     name = list.text.strip()
+    #     if "seed" in name or "Seed" in name:
+    #         href_link = list.a.attrs["href"]
+    #         filtered_repos.append({'name': name, 'link':href_link})
         
 
-    print(filtered_repos)
+    # print(filtered_repos)
 
 def get_list_neuron():
     url = "https://www.theneurondaily.com/"
@@ -72,4 +72,5 @@ def get_list_console():
 
 if __name__ == "__main__":
     print("started scraping")
+    get_list_feed()
     get_list_console()
